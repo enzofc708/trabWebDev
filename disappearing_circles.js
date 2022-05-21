@@ -44,7 +44,7 @@ let showCircles = function(){
     [...deleted].forEach(element => {
         element.style.borderStyle = "dashed";
         element.style.display = "block";
-        element.style.opacity = "0.7";
+        element.style.opacity = "0.4";
 
         element.classList.remove("deleted");
     });
