@@ -79,6 +79,10 @@ let savePos = (top, left, id) => {
 };
 
 let loadPos = () => {
+    const posDes = JSON.parse(localStorage.getItem("position divDesenho") || "{}");
+    const posVar = JSON.parse(localStorage.getItem("position divVars") || "{}");
+    $(".divDesenho").css(posDes);
+    $(".divVars").css(posVar);
 };
 
 $(".draggable").css("display", "inline-block");
@@ -88,3 +92,5 @@ $(".draggable").draggable({
         savePos(top, left, $(this).attr("id"));
     }
 });
+
+loadPos();
