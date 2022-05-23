@@ -25,6 +25,20 @@ let update = () => {
     for (let i = 0; i < +Nslider.value; i++) {
         let gAtualId = `#g${count++}`;
         let gAtual = d3.select(gAtualId);
+        let translateX = 0;
+        let translateY = 0;
+
+        if(document.getElementById("radio1").checked){
+            translateX = 80;
+        }
+        else if(document.getElementById("radio2").checked){
+            translateX = 80;
+            translateY = 80;
+        }
+        else if(document.getElementById("radio3").checked){
+            translateY = 80;
+        }
+        
 
         gAtual.append("rect")
               .attr("fill", colors[i % colors.length])
@@ -36,7 +50,7 @@ let update = () => {
         
         gAtual.append("g")
               .attr("id", `g${count}`)
-              .attr("transform", `rotate(${90 * +slider.value}) scale(${1/(Math.acos(angle))})`);
+              .attr("transform", `translate(${translateX},${translateY}) rotate(${90 * +slider.value}) scale(${1/(+slider.value <= 0.5 ? Math.cos(angle) : Math.sin(angle))})`);
     }
 };
 
@@ -51,3 +65,26 @@ Nslider.oninput = () => {
     NValue.innerHTML = Nslider.value;
     update();
 };
+
+for (let rad of document.getElementsByName("varRadio")) {
+    rad.onchange = update;
+}
+
+let savePos = (top, left, id) => {
+    var posObject = {
+        top: top,
+        left: left
+    };
+    localStorage.setItem(`position ${id}`, JSON.stringify(posObject));
+};
+
+let loadPos = () => {
+};
+
+$(".draggable").css("display", "inline-block");
+$(".draggable").draggable({
+    stop: (_, ui) => {
+        const {top, left} = ui.offset;
+        savePos(top, left, $(this).attr("id"));
+    }
+});

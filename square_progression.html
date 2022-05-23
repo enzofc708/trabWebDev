@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <title>Square Progression</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script
+			  src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"
+			  integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA="
+			  crossorigin="anonymous"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
-    <div id="divDesenho">
+    <div id="divDesenho" class="draggable">
     </div>
-    <div>
+    <div id="divVars" class="draggable" style="border:1px solid gray">
         <div>
             <div>
                 Ratio = <span id="ratioValue"></span>
@@ -26,14 +30,14 @@
             <div>
                 Variation 
                 <span>
-                    <input type="radio" name="varRadio" id="radio1" value="1" checked>
+                    <input type="radio" name="varRadio" id="radio0" value="0" checked>
+                    <label for="radio0">0</label>
+                    <input type="radio" name="varRadio" id="radio1" value="1">
                     <label for="radio1">1</label>
                     <input type="radio" name="varRadio" id="radio2" value="2">
                     <label for="radio2">2</label>
                     <input type="radio" name="varRadio" id="radio3" value="3">
                     <label for="radio3">3</label>
-                    <input type="radio" name="varRadio" id="radio4" value="4">
-                    <label for="radio4">4</label>
                 </span>
             </div>
         </div>
