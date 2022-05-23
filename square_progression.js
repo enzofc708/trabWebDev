@@ -87,9 +87,9 @@ let loadPos = () => {
 
 $(".draggable").css("display", "inline-block");
 $(".draggable").draggable({
-    stop: (_, ui) => {
+    stop: (e, ui) => {
         const {top, left} = ui.offset;
-        savePos(top, left, $(this).attr("id"));
+        savePos(top, left, e.target.id);
     }
 });
 
