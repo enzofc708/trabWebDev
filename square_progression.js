@@ -94,3 +94,7 @@ $(".draggable").draggable({
 });
 
 loadPos();
+
+document.getElementById("DOMbutton").onclick = () => {
+    printDOMTree(document.getElementById("desenho"));
+};
